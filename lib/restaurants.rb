@@ -7,7 +7,6 @@ class Restaurants
 
   #------------------------------------------------------------------------------------
   def initialize(name, formatted_address, opening_hours, rating, user_ratings_total)  # this method creates a new instances of a
-binding.pry
     @name = name
     @formatted_address = formatted_address
     @opening_hours = opening_hours

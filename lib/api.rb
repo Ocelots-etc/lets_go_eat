@@ -6,8 +6,9 @@ class API
     restaurants = RestClient.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=japanese+restaurants+in+NewJersey&key=#{Key.access_key}")
     restaurants_hash = JSON.parse(restaurants)
 
-    restaurants_hash.each_with_index do |restaurant, n|
-      Restaurants.new(restaurants_hash["html_attributions"]["results"][0]["icon"]["name"], restaurants_hash["formatted_address"], restaurants_hash["opening_hours"], restaurants_hash["rating"], restaurants_hash["user_ratings_total"])
+    for index in 0..9 do 
+      restaurant = restaurants_hash["results"][index]
+      Restaurants.new(restaurant["name"], restaurant["formatted_address"], restaurant["opening_hours"], restaurant["rating"], restaurant["user_ratings_total"]) #, restaurant["place_id"] )
     end
   end
 
